@@ -1,0 +1,14 @@
+#!/bin/sh
+read -s password
+echo "Positions (comma,separated):"
+read positions
+
+#split positions by comma
+positions=$(echo $positions | tr "," "\n")
+
+sleep 2
+for position in $positions; do
+	key=${password:$(($position-1)):1}
+	xdotool type "$key"
+	sleep .1
+done

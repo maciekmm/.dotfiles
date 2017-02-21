@@ -1,0 +1,22 @@
+#!/bin/sh
+echo "First:"
+read -s pwd1
+echo "Second:"
+read -s pwd2
+
+pwd1size=${#pwd1}
+pwd2size=${#pwd2}
+
+sleep 2
+
+for ((i=0; i<$(( $pwd1size > $pwd2size ? $pwd1size : $pwd2size)); i++))
+do
+	if [ $i -lt $pwd2size ]
+	then
+			xdotool type "${pwd2:$i:1}"
+	fi
+	if [ $i -lt $pwd1size ]
+	then
+			xdotool type "${pwd1:$i:1}"
+	fi
+done

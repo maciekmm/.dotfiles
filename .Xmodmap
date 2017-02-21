@@ -1,0 +1,2 @@
+!Omit 8 and 9 to disable back/forward browser gestures
+pointer = 1 2 3 4 5 0 0 6 7
