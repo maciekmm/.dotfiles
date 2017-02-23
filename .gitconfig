@@ -1,6 +1,7 @@
 [user]
 	email = business@maciekmm.net
 	name = Maciej Mionskowski
+	signingkey = A20E0C4E8571568D
 [core]
 	editor = vim
 [color]
