@@ -1,4 +1,4 @@
 # Disable Caps Lock, it's still capturable by teamspeak
 # TODO: move it to .Xmodmap if possible
-# setxkbmap -option caps:none
+setxkbmap -option caps:none
 
