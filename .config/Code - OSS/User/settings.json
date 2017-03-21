@@ -1,5 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.minimap.enabled": true,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 14,
+    "window.zoomLevel": -1
 }

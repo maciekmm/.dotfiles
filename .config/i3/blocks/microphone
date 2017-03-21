@@ -1,0 +1,8 @@
+#!/bin/sh
+
+muted=$(amixer -D default get Capture | grep off)
+if [ -n "$muted" ]; then
+	echo ""
+else 
+	echo ""
+fi
