@@ -1,5 +1,9 @@
 #!/bin/sh
 
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+  pactl set-source-mute 1 toggle
+fi
+
 muted=$(amixer -D default get Capture | grep off)
 if [ -n "$muted" ]; then
 	echo ""
