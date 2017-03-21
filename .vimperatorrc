@@ -1,0 +1,3 @@
+:noremap j 4j
+:noremap k 3k
+inoremap <C-a> <C-Home><C-S-End>
