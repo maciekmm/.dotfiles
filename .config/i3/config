@@ -167,7 +167,7 @@ workspace $ws2 gaps outer 0
 # Application settings
 # Spotify does not set class name on startup -.-
 for_window [class="Spotify"] move to workspace $ws8
-assign [class="^Navigator$"] $ws1
+assign [class="^Firefox$"] $ws1
 assign [title="Steam"] $ws9
 for_window [class="Steam"] $ws9
 assign [class="^Xfce4-terminal$"] $ws2
@@ -256,9 +256,11 @@ bar {
 		}
 
 }
-
 exec --no-startup-id feh --bg-scale /home/maciekmm/images/wallpapers/view.jpeg
-exec --no-startup-id compton -GCb
+exec --no-startup-id compton -b
 exec --no-startup-id xss-lock -- '/home/maciekmm/scripts/lock' 
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
+
+exec --no-startup-id spotify
+exec --no-startup-id firefox
