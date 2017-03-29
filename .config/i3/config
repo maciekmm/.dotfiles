@@ -171,8 +171,11 @@ assign [class="^Firefox$"] $ws1
 assign [title="Steam"] $ws9
 for_window [class="Steam"] $ws9
 assign [class="^Xfce4-terminal$"] $ws2
+for_window [class="^Galculator$"] floating enable
+
 # reload the configuration file
 bindsym $mod+$modalt+c reload
+
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+$modalt+r restart
@@ -231,8 +234,9 @@ bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; pkill -RTMIN+12 i3blocks"
 bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; pkill -RTMIN+12 i3blocks"
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioStop exec playerctl stop
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
