@@ -114,13 +114,21 @@ bindsym $mod+a focus parent
 set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: " 
-set $ws4 "4:" 
-set $ws5 "5:"
+set $ws4 "4: " 
+set $ws5 "5: "
 set $ws6 "6:"
 set $ws7 "7:"
 set $ws8 "8: "
 set $ws9 "9: "
 set $ws10 "10:"
+
+# bind workspace to monitor
+workspace $ws1 output HDMI1
+#workspace $2 output HDMI1
+workspace $ws3 output HDMI1
+
+# move workspace
+bindsym $mod+x move workspace to output left
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -150,11 +158,11 @@ bindsym $mod+$modalt+0 move container to workspace $ws10
 bindsym $mod+c scratchpad show
 
 # floating terminal
-exec --no-startup-id "exec xfce4-terminal -T I3-FLOATING-TERM"
-for_window [title="^I3-FLOATING-TERM$"] floating enable
-for_window [title="^I3-FLOATING-TERM$"] resize set 1910 150
-for_window [title="^I3-FLOATING-TERM$"] move absolute position 5px 935px
-for_window [title="^I3-FLOATING-TERM$"] move scratchpad
+#exec --no-startup-id "exec xfce4-terminal -T I3-FLOATING-TERM"
+#for_window [title="^I3-FLOATING-TERM$"] floating enable
+#for_window [title="^I3-FLOATING-TERM$"] resize set 1910 150
+#for_window [title="^I3-FLOATING-TERM$"] move absolute position 5px 935px
+#for_window [title="^I3-FLOATING-TERM$"] move scratchpad
 
 set $default_gaps_inner 0
 set $default_gaps_outer 0
@@ -167,10 +175,11 @@ workspace $ws2 gaps outer 0
 # Application settings
 # Spotify does not set class name on startup -.-
 for_window [class="Spotify"] move to workspace $ws8
-assign [class="^Firefox$"] $ws1
+#assign [class="^Firefox$"] $ws1
+assign [class="^Keepassx2$"] $ws5
 assign [title="Steam"] $ws9
 for_window [class="Steam"] $ws9
-assign [class="^Xfce4-terminal$"] $ws2
+#assign [class="^Xfce4-terminal$"] $ws2
 for_window [class="^Galculator$"] floating enable
 
 # reload the configuration file
@@ -212,9 +221,9 @@ bindsym $mod+r mode "resize"
 
 # Screen locking
 bindsym $sup+l exec "xset dpms force off"
-bindsym $sup+s exec "systemctl suspend"
-bindsym $sup+r exec "systemctl reboot"
-bindsym $sup+p exec "systemctl poweroff"
+bindsym $sup+$modalt+s exec "systemctl suspend"
+bindsym $sup+$modalt+r exec "systemctl reboot"
+bindsym $sup+$modalt+p exec "systemctl poweroff"
 
 # Screenshoting
 bindsym --release Print exec /home/maciekmm/scripts/screenshot "-s"
@@ -224,9 +233,9 @@ bindsym --release Shift+Print exec /home/maciekmm/scripts/screenshot "-u"
 bindsym $sup+m exec --no-startup-id "setxkbmap pl; xmodmap /home/maciekmm/.Xmodmap"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 +5%; pkill -RTMIN+10 i3blocks"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -5%; pkill -RTMIN+10 i3blocks"
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo  +5%; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5%; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle; pkill -RTMIN+10 i3blocks"
 bindsym XF86AudioMicMute exec --no-startup-id "pactl set-source-mute 1 toggle; pkill -RTMIN+10 i3blocks"
 
 # Sreen brightness controls
@@ -267,4 +276,3 @@ exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
 
 exec --no-startup-id spotify
-exec --no-startup-id firefox
