@@ -1,0 +1,26 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "editor.minimap.enabled": true,
+    "files.autoSave": "off",
+    "editor.fontSize": 14,
+    "window.zoomLevel": -0.5,
+    "editor.cursorBlinking": "solid",
+    "search.useIgnoreFilesByDefault": true,
+    "go.docsTool": "gogetdoc",
+    "files.associations": {
+        "*.tpl": "html"
+    },
+    "go.addTags": {
+        "tags": "json",
+        "options": "json=omitempty",
+        "promptForTags": false,
+        "transform": "snakecase"
+    },
+    "go.removeTags": {
+        "tags": "db",
+        "options": "",
+        "promptForTags": false
+    },
+    "go.testFlags": ["-v"]
+    //"git.enabled": false
+}

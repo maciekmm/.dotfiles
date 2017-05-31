@@ -10,7 +10,7 @@ xterm*locale: true
 xterm*utf8: 3
 xterm*utf8Fonts: 2
 
-#Xft.dpi: 157
+! Xft.dpi: 157
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintslight

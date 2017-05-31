@@ -9,8 +9,11 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# CapsLock
 set $mod Mod3
+# Left alt
 set $modalt Mod1
+# Windows button
 set $sup Mod4
 
 set_from_resource $darkred     color1  #000000
@@ -102,6 +105,7 @@ bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+$modalt+space floating toggle
+bindsym $mod+$modalt+s sticky toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -120,7 +124,7 @@ set $ws6 "6:"
 set $ws7 "7:"
 set $ws8 "8: "
 set $ws9 "9: "
-set $ws10 "10:"
+set $ws10 "10: "
 
 # bind workspace to monitor
 workspace $ws1 output HDMI1
