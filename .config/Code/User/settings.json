@@ -8,7 +8,7 @@
     "search.useIgnoreFilesByDefault": true,
     "go.docsTool": "gogetdoc",
     "files.associations": {
-        "*.tpl": "html"
+        "*.tpl": "php"
     },
     "go.addTags": {
         "tags": "json",
@@ -21,6 +21,11 @@
         "options": "",
         "promptForTags": false
     },
-    "go.testFlags": ["-v"]
+    "go.testFlags": [
+        "-v"
+    ],
+    "go.autocompleteUnimportedPackages": true,
+    "workbench.iconTheme": "seti",
+    "vim.disableAnnoyingNeovimMessage": true
     //"git.enabled": false
 }

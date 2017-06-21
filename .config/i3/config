@@ -273,7 +273,7 @@ bar {
 		}
 
 }
-exec --no-startup-id feh --bg-scale /home/maciekmm/images/wallpapers/view.jpeg
+exec --no-startup-id feh --bg-scale /home/maciekmm/images/wallpapers/wp.jpg
 exec --no-startup-id compton -b
 exec --no-startup-id xss-lock -- '/home/maciekmm/scripts/lock' 
 exec --no-startup-id nm-applet

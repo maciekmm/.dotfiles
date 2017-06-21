@@ -9,3 +9,9 @@ set laststatus=2 " Always display status line
 set autoindent
 
 syntax on " Always do syntax hightlighting
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+call vundle#end()            " required
