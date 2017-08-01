@@ -11,7 +11,7 @@
         "*.tpl": "php"
     },
     "go.addTags": {
-        "tags": "json",
+        "tags": "json,db",
         "options": "json=omitempty",
         "promptForTags": false,
         "transform": "snakecase"
