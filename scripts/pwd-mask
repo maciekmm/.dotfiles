@@ -10,5 +10,5 @@ sleep 2
 for position in $positions; do
 	key=${password:$(($position-1)):1}
 	xdotool type "$key"
-	sleep .1
+	sleep .5
 done

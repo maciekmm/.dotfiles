@@ -17,7 +17,7 @@ if hash xfce4-screenshooter 2>/dev/null; then
     cmd="xfce4-screenshooter $PARAMS --save $DIRECTORY"
 else
     if hash scrot 2>/dev/null; then
-        cmd="scrot $PARAMS $DIRECTORY/%Y-%m-%d-%H-%M-%S.png"
+        cmd="scrot $PARAMS $DIRECTORY/$( uuidgen ).png"
     fi
 fi
 
@@ -43,7 +43,7 @@ fileName=${file##*/}
 if [[ "$UPLOAD_DESTINATION" == "server" ]]; then
     if hash kkrsync 2>/dev/null; then
 		echo "connecting"
-        rsync -var $DIRECTORY/ -e "ssh $SSH_PARAMS" $SSH_ADDRESS:$REMOTE_DIRECTORY
+        rsync -avz $DIRECTORY/$filename -e "ssh $SSH_PARAMS" $SSH_ADDRESS:$REMOTE_DIRECTORY
     else
 	(echo "
 cd $REMOTE_DIRECTORY

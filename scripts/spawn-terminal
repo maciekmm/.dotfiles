@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ID=$(xdpyinfo | grep focus | cut -f4 -d " ")
+PID=$(($(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3) + 6))
+echo $ID
+echo $PID
+if [ -e "/proc/$PID/cwd" ]
+then
+    ssh-agent i3-sensible-terminal -d $(readlink /proc/$PID/cwd) &
+else
+    ssh-agent i3-sensible-terminal &
+fi
