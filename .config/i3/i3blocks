@@ -27,21 +27,53 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/lib/i3blocks/$BLOCK_NAME
-separator_block_width=20
-markup=none
+markup=pango
 
-#playerctl
+full_text=<span font="8"></span>
+align=center
+separator=false
+separator_block_width=0
+
+[separator]
+color=#282828
+background=#333333
+
+[window title]
+command=xdotool getactivewindow getwindowname | tr -d '\n' | head -c50 | iconv -f utf-8 -t ascii && echo -n "  "
+label= 
+interval=1
+align=center
+markup=none
+background=#333333
+
+[separator]
+color=#333333
+background=#282828
+
 [playerctl]
 command=/home/maciekmm/.config/i3/blocks/playerctl
 label=
+markup=none
+instance=spotify
+min_width=200
 interval=5
+
+[separator]
+color=#282828
+background=#333333
 
 [brightness]
 command=/home/maciekmm/.config/i3/blocks/brightness
+background=#333333
+border=
 label=
+min_width=60
 interval=10
 signal=12
 
+[separator]
+color=#333333
+background=#282828
 #
 # Volume indicator
 #
@@ -49,21 +81,31 @@ signal=12
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-#label=VOL
 label=
+min_width=60
 instance=Master
-#instance=PCM
 interval=10
 signal=10
 
+[separator]
+color=#282828
+background=#333333
+
 [microphone]
 command=/home/maciekmm/.config/i3/blocks/microphone
+background=#333333
+min_width=40
 interval=once
 signal=10
+
+[separator]
+color=#333333
+background=#282828
 
 [bluetooth]
 command=/home/maciekmm/.config/i3/blocks/bluetooth
 label=
+min_width=40
 interval=5
 
 #
@@ -72,7 +114,7 @@ interval=5
 # The type defaults to "mem" if the instance is not specified.
 [memory]
 label=
-separator=false
+min_width=120
 interval=30
 
 #[memory]
@@ -81,50 +123,36 @@ interval=30
 #separator=false
 #interval=30
 
+
+[separator]
+color=#333333
+background=#282828
+
+[disk]
+label=
+min_width=75
+#instance=/mnt/data
+interval=30
+
 # Disk usage
 #
 # The directory defaults to $HOME if the instance is not specified.
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
-[disk]
-label=
-#instance=/mnt/data
-interval=30
 
-# Network interface monitoring
-#
-# If the instance is not specified, use the interface used for default route.
-# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-#[iface]
-##instance=wlan0
-##color=#00FF00
-#interval=10
-#separator=false
-#
-#[wifi]
-##instance=wlp3s0
-#interval=10
-#label=
-#separator=true
-#
-#[bandwidth]
-#instance=eth0
-#interval=5
-
-# CPU usage
-#
-# The script may be called with -w and -c switches to specify thresholds,
-# see the script for details.
-#[cpu_usage]
-#label=CPU
-#interval=10
-#min_width=CPU: 100.00%
-#separator=false
+[separator]
+color=#282828
+background=#333333
 
 [load_average]
 label=
+background=#333333
 interval=10
-urgent=false
+min_width=60
+
+[separator]
+color=#333333
+background=#282828
 
 # Battery indicator
 #
@@ -132,10 +160,27 @@ urgent=false
 [battery]
 label=
 #instance=1
+min_width=90
 interval=30
 
+[separator]
+color=#282828
+background=#333333
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+label=
+background=#333333
+min_width=75
+command=date '+%d-%m'
 interval=5
+
+[separator]
+color=#333333
+background=#282828
+
+[time]
+label=
+command=date '+%H:%M:%S '
+interval=1
+min_width=90

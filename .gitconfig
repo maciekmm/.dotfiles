@@ -4,5 +4,7 @@
 	signingkey = A20E0C4E8571568D
 [core]
 	editor = vim
+[pull]
+	rebase = true
 [color]
 	ui = true

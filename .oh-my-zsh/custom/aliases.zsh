@@ -10,3 +10,10 @@ alias cal='cal -m'
 
 # Fix PACMAN
 alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo pacman -Syyuu  && sudo pacman -Suu'
+
+# Colored diff
+alias diff='diff --color=auto'
+
+function subs() {
+	iconv -f CP1250 -t UTF-8 $1
+}

@@ -2,8 +2,8 @@
 {
     "editor.minimap.enabled": true,
     "files.autoSave": "off",
-    "editor.fontSize": 14,
-    "window.zoomLevel": -0.5,
+    "editor.fontSize": 13,
+    "window.zoomLevel": 0,
     "editor.cursorBlinking": "solid",
     "search.useIgnoreFilesByDefault": true,
     "go.docsTool": "gogetdoc",
@@ -26,6 +26,7 @@
     ],
     "go.autocompleteUnimportedPackages": true,
     "workbench.iconTheme": "seti",
-    "vim.disableAnnoyingNeovimMessage": true
+    "vim.disableAnnoyingNeovimMessage": true,
+    "workbench.panel.location": "bottom"
     //"git.enabled": false
 }
