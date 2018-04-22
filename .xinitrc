@@ -25,6 +25,11 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
+# Keyring
+dbus-update-activation-environment --systemd DISPLAY
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
+
 # Setup GO environment
 export GOPATH="$HOME/development/projects/repositories/go:$HOME/development/projects/go/.repo_private:$HOME/development/projects/go/.repo_commercial"
 export PATH="$PATH:$HOME/development/projects/repositories/go/bin:$HOME/development/projects/go/.repo_private/bin:$HOME/development/projects/go/.repo_commercial/bin"

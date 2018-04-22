@@ -42,6 +42,8 @@ let g:vimtex_compiler_latexmk = {
 
 syntax on " Always do syntax hightlighting
 
+nnoremap <F9> :!%:p " Execute current file
+
 "ino " ""<left>
 "ino ' ''<left>
 "ino ( ()<left>
@@ -58,7 +60,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'lervag/vimtex'
 Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
-call vimtex#init()
+autocmd VimEnter * call vimtex#init()
 
 " autocmd VimEnter * NERDTree
 

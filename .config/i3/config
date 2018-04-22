@@ -176,7 +176,6 @@ workspace $ws2 gaps outer 0
 # Application settings
 # Spotify does not set class name on startup -.-
 for_window [class="Spotify"] move to workspace $ws8
-assign [class="^Keepassx2$"] $ws5
 for_window [class="Steam"] move to workspace $ws9
 for_window [class="^Galculator$"] floating enable
 assign [instance="^Mail$"] $ws6
@@ -279,7 +278,7 @@ bar {
 }
 
 exec --no-startup-id xset s 180 10
-exec --no-startup-id feh --bg-fill /home/maciekmm/images/wallpapers/winter.jpg
+exec --no-startup-id feh --bg-fill /home/maciekmm/images/wallpapers/molo.jpg
 exec --no-startup-id compton -b
 exec --no-startup-id unclutter -b
 exec --no-startup-id xss-lock -n /home/maciekmm/scripts/dim-screen.sh -- /home/maciekmm/scripts/lock
