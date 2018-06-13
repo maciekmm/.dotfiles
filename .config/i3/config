@@ -35,13 +35,18 @@ set $transparent #00000099
 set $height 28
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.background       $black
+client.focused 			$yellow  $darkyellow $white $darkcyan
+client.focused_inactive i3wm.color12 $darkcyan $white i3wm.color12
+client.unfocused 		i3wm.color3  i3wm.color6 $white i3wm.color0
+client.urgent			i3wm.color5  i3wm.color0 i3wm.color15 i3wm.color1
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 font pango:Hack, Awesome 8
 new_window pixel 2
 hide_edge_borders smart
+# 'toggle' workspace
+workspace_auto_back_and_forth yes
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -98,7 +103,6 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+$modalt+space floating toggle
 bindsym $mod+$modalt+s sticky toggle
-bindsym $mod+y fullscreen disable; floating enable; resize set 700 400; sticky enable; move window to position 1315 900
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -154,7 +158,8 @@ bindsym $mod+$modalt+9 move container to workspace $ws9
 bindsym $mod+$modalt+0 move container to workspace $ws10
 
 # scratchpad
-# bindsym $mod+c scratchpad show
+bindsym $mod+c scratchpad show
+bindsym $mod+v move scratchpad
 
 # floating terminal
 #exec --no-startup-id "exec xfce4-terminal -T I3-FLOATING-TERM"
@@ -182,7 +187,7 @@ assign [instance="^Mail$"] $ws6
 # Chromium is stupid and lunches on a random workspace
 for_window [class="^chromium$"] floating disable, move window to workspace current
 for_window [class="^Chromium$"] floating disable, move window to workspace current
-
+for_window [class="keepassxc"] floating enable
 # reload the configuration file
 bindsym $mod+$modalt+c reload
 
@@ -216,8 +221,38 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
+
+# take screenshots
+set $screenshot [u]pload, [c]lipboard, [s]ave
+mode "$screenshot" {
+        bindsym --release u exec /home/maciekmm/scripts/screenshot "-s"; mode "default"
+        bindsym --release Print exec /home/maciekmm/scripts/screenshot "-s"; mode "default"
+        bindsym --release c exec maim -s | xclip -selection clipboard -t image/png; mode "default"
+        bindsym --release s exec maim -s | tee ~/images/screenshots/$( uuidgen ).png | xclip -selection clipboard -t image/png; mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym Print mode "$screenshot"
+
+# rarely used options
+set $options [s]potify, [p]ause notifications, [r]esume notifications, p[i]n window
+mode "$options" {
+        # Spotify + youtube
+        bindsym s exec --no-startup-id "python /home/maciekmm/scripts/spotatube/spotatube.py | xclip -selection clipboard && notify-send 'Spotify link copied'"; mode "default"
+
+        # resume notifications
+        bindsym r exec --no-startup-id "notify-send 'DUNST_COMMAND_RESUME'"; mode "default"
+        # pause notifications
+        bindsym p exec --no-startup-id "notify-send 'DUNST_COMMAND_PAUSE'"; mode "default"
+        
+        bindsym i fullscreen disable; floating enable; resize set 700 400; sticky enable; move window to position 1315 900; mode "default"
+            
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+o mode "$options"
 
 # Screen locking
 bindsym $sup+l exec "~/scripts/lock"
@@ -225,21 +260,8 @@ bindsym $sup+$modalt+s exec "systemctl suspend"
 bindsym $sup+$modalt+r exec "systemctl reboot"
 bindsym $sup+$modalt+p exec "systemctl poweroff"
 
-# Screenshoting
-bindsym --release Print exec /home/maciekmm/scripts/screenshot "-s"
-bindsym --release Shift+Print exec /home/maciekmm/scripts/screenshot
-
-# Spotify + youtube
-bindsym $mod+$modalt+p exec --no-startup-id "python /home/maciekmm/scripts/spotatube/spotatube.py | xclip -selection clipboard && notify-send 'Spotify link copied'"
-
 # External keyboard hot-plugging fix
 bindsym $sup+m exec --no-startup-id "setxkbmap pl; xmodmap ~/.Xmodmap"
-
-# Notifications
-# resume
-bindsym $sup+n exec --no-startup-id "notify-send 'DUNST_COMMAND_RESUME'"
-# pause
-bindsym $sup+shift+n exec --no-startup-id "notify-send 'DUNST_COMMAND_PAUSE'"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo  +5%; pkill -RTMIN+10 i3blocks"
@@ -262,23 +284,23 @@ bindsym XF86AudioPrev exec playerctl previous
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  i3bar_command i3bar
+  i3bar_command i3bar -t
   status_command i3blocks -c ~/.config/i3/i3blocks
   position top
   height $height
   colors {
     separator #282828
-    background #282828
+    background #28282800
     statusline #ebdbb2
-    focused_workspace #689d6a #689d6a #282828
-    active_workspace #1d2021 #1d2021 #928374
-    inactive_workspace #32302f #32302f #928374
-    urgent_workspace #cc241d #cc241d #ebdbb2
+    focused_workspace #689d6a00 #689d6a00 #282828
+    active_workspace #1d202100 #1d202100 #928374
+    inactive_workspace #32302f00 #32302f00 #928374
+    urgent_workspace #cc241d00 #cc241d00 #cc241d
   }
 }
 
 exec --no-startup-id xset s 180 10
-exec --no-startup-id feh --bg-fill /home/maciekmm/images/wallpapers/molo.jpg
+exec --no-startup-id feh --bg-fill /home/maciekmm/images/wallpapers/starry.jpg
 exec --no-startup-id compton -b
 exec --no-startup-id unclutter -b
 exec --no-startup-id xss-lock -n /home/maciekmm/scripts/dim-screen.sh -- /home/maciekmm/scripts/lock
@@ -290,7 +312,8 @@ exec --no-startup-id nextcloud
 exec --no-startup-id spotify
 exec --no-startup-id thunderbird
 
-client.focused #689d6a #689d6a #282828 #282828
-client.focused_inactive #1d2021 #1d2021 #928374 #282828
-client.unfocused #32302f #32302f #928374 #282828
-client.urgent #cc241d #cc241d #ebdbb2 #282828
+# easily accessible keepass
+for_window [instance="scratchpad"] move scratchpad
+bindsym $mod+p [class="(?i)keepassxc" instance="scratchpad"] scratchpad show
+exec --no-startup-id keepassxc -name scratchpad
+

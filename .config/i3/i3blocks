@@ -35,20 +35,20 @@ separator=false
 separator_block_width=0
 
 [separator]
-color=#282828
-background=#333333
+color=#28282800
+background=#33333300
 
-[window title]
-command=xdotool getactivewindow getwindowname | tr -d '\n' | head -c50 | iconv -f utf-8 -t ascii && echo -n "  "
-label= 
-interval=1
-align=center
-markup=none
-background=#333333
+#[window title]
+#command=xdotool getactivewindow getwindowname | tr -d '\n' | head -c30 | iconv -f utf-8 -t ascii && echo -n "  "
+#label= 
+#interval=1
+#align=center
+#markup=none
+#background=#33333300
 
 [separator]
-color=#333333
-background=#282828
+color=#33333300
+background=#28282800
 
 [playerctl]
 command=/home/maciekmm/.config/i3/blocks/playerctl
@@ -59,12 +59,12 @@ min_width=200
 interval=5
 
 [separator]
-color=#282828
-background=#333333
+color=#28282800
+background=#33333300
 
 [brightness]
 command=/home/maciekmm/.config/i3/blocks/brightness
-background=#333333
+background=#33333300
 border=
 label=
 min_width=60
@@ -72,8 +72,8 @@ interval=10
 signal=12
 
 [separator]
-color=#333333
-background=#282828
+color=#33333300
+background=#28282800
 #
 # Volume indicator
 #
@@ -88,19 +88,19 @@ interval=10
 signal=10
 
 [separator]
-color=#282828
-background=#333333
+color=#28282800
+background=#33333300
 
 [microphone]
 command=/home/maciekmm/.config/i3/blocks/microphone
-background=#333333
+background=#33333300
 min_width=40
 interval=once
 signal=10
 
 [separator]
-color=#333333
-background=#282828
+color=#33333300
+background=#28282800
 
 [bluetooth]
 command=/home/maciekmm/.config/i3/blocks/bluetooth
@@ -125,8 +125,8 @@ interval=30
 
 
 [separator]
-color=#333333
-background=#282828
+color=#33333300
+background=#28282800
 
 [disk]
 label=
@@ -141,18 +141,18 @@ interval=30
 # (defaults to 10 for 10%).
 
 [separator]
-color=#282828
-background=#333333
+color=#28282800
+background=#33333300
 
 [load_average]
 label=
-background=#333333
+background=#33333300
 interval=10
 min_width=60
 
 [separator]
-color=#333333
-background=#282828
+color=#33333300
+background=#28282800
 
 # Battery indicator
 #
@@ -164,23 +164,24 @@ min_width=90
 interval=30
 
 [separator]
-color=#282828
-background=#333333
+color=#28282800
+background=#33333300
 # Date Time
 #
 [time]
 label=
-background=#333333
+background=#33333300
 min_width=75
 command=date '+%d-%m'
 interval=5
 
 [separator]
-color=#333333
-background=#282828
+color=#33333300
+background=#28282800
 
 [time]
 label=
 command=date '+%H:%M:%S '
+background=#33333300
 interval=1
 min_width=90

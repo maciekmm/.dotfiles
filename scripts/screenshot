@@ -16,8 +16,8 @@ IMGUR_HEADER="Authorization: Client-ID $IMGUR_API_KEY"
 if hash xfce4-screenshooter 2>/dev/null; then
     cmd="xfce4-screenshooter $PARAMS --save $DIRECTORY"
 else
-    if hash scrot 2>/dev/null; then
-        cmd="scrot $PARAMS $DIRECTORY/$( uuidgen ).png"
+    if hash maim 2>/dev/null; then
+        cmd="maim $PARAMS $DIRECTORY/$( uuidgen ).png"
     fi
 fi
 

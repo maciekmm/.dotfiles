@@ -6,15 +6,17 @@ pkill unclutter
 notify-send "DUNST_COMMAND_PAUSE"
 
 SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+CY_SUM=0
 for RES in $SR; do
   SRA=(${RES//[x+]/ })
   CX=$((${SRA[2]} + 25))
-  CY=$((${SRA[1]} - 50))
+  CY=$((CY_SUM + ${SRA[1]} - 50))
   rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
+  CY_SUM=$((CY_SUM + ${SRA[1]}))
 done
 
 TMPBG=/tmp/screen.png
-scrot $TMPBG && convert $TMPBG -scale 5% -scale 2000% -draw "fill black fill-opacity 0.4 $rectangles" $TMPBG
+scrot $TMPBG && convert $TMPBG -scale 5% -scale 2000% -fill black -draw "fill-opacity 0.4 $rectangles" $TMPBG
 
 letterEnteredColor=d23c3dff
 letterRemovedColor=d23c3dff
@@ -22,7 +24,8 @@ passwordCorrect=00000000
 passwordIncorrect=d23c3dff
 background=00000000
 foreground=ffffffff
-
+SCALING_FACTOR=1.2
+OFFSET=$(printf '%.*f\n' 0 $( echo 80/$SCALING_FACTOR | bc ))
 i3lock \
    -t -n -i "$TMPBG" --indicator \
    --clock --datestr "Type password to unlock..." \
@@ -32,10 +35,10 @@ i3lock \
    --keyhlcolor=$letterEnteredColor --bshlcolor=$letterRemovedColor --separatorcolor=$background \
    --insidevercolor=$passwordCorrect --insidewrongcolor=$passwordIncorrect \
    --ringvercolor=$foreground --ringwrongcolor=$foreground \
-   --indpos="280:h-340" \
-   --timepos="ix-180:iy" \
+   --indpos="280:y+h-$OFFSET" \
+   --timepos="ix-200:iy-5" \
    --timesize=24 \
-   --datepos="tx+28:ty+25" \
+   --datepos="tx+45:ty+25" \
 
 unclutter -b
 notify-send "DUNST_COMMAND_RESUME"

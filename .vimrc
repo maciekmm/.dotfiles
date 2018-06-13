@@ -10,9 +10,13 @@ set ruler
 set laststatus=2 " Always display status line
 set autoindent
 set showtabline=2
+set shiftwidth=4
+set noexpandtab
+
 " YouCompleteMe
 let g:dotvim = '~/.vim'
 let g:ycm_global_ycm_extra_conf = g:dotvim.'/ycm.py'
+
 " YCM CPP
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
