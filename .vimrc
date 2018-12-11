@@ -12,6 +12,7 @@ set autoindent
 set showtabline=2
 set shiftwidth=4
 set noexpandtab
+set guioptions+=a
 
 " YouCompleteMe
 let g:dotvim = '~/.vim'
@@ -47,6 +48,7 @@ let g:vimtex_compiler_latexmk = {
 syntax on " Always do syntax hightlighting
 
 nnoremap <F9> :!%:p " Execute current file
+nnoremap <C-Insert> "+y
 
 "ino " ""<left>
 "ino ' ''<left>

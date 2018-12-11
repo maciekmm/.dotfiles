@@ -5,95 +5,68 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-!colours
-!*background: #222022
-!*foreground: #F3D7D1
-! 
-!*color0:  #493441
-!*color8:  #382536
-! 
-!*color1:  #CB4E72
-!*color9:  #C92F4C
-! 
-!*color2:  #AB579C
-!*color10: #7A449A
-! 
-!*color3:  #E9A66C
-!*color11: #C64950
-! 
-!*color4:  #497DD8
-!*color12: #52326C
-! 
-!*color5:  #F4DDCC
-!*color13: #E38D79
-! 
-!*color6:  #F5616D
-!*color14: #C12F4D
-! 
-!*color7:  #AC9C93
-!*color15: #F3D7D1
+! Colors
+! special
+*.foreground:   #c5c8c6
+*.background:   #1d1f21
+*.cursorColor:  #c5c8c6
 
+! black
+*.color0:       #282a2e
+*.color8:       #373b41
 
-*foreground: #e9e9f4
-*foreground_bold: #f1f2f8
-*cursor: #f1f2f8
-*background: #282936
+! red
+*.color1:       #a54242
+*.color9:       #cc6666
 
-*color0: #282936
-*color8: #626483
-*color7: #e9e9f4
-*color15: #f7f7fb
+! green
+*.color2:       #689d6a
+*.color10:      #b5bd68
 
-*color1: #ea51b2
-*color9: #ea51b2
+! yellow
+*.color3:       #de935f
+*.color11:      #f0c674
 
-*color2: #ebff87
-*color10: #ebff87
+! blue
+*.color4:       #5f819d
+*.color12:      #81a2be
 
-*color3: #00f769
-*color11: #00f769
+! magenta
+*.color5:       #85678f
+*.color13:      #b294bb
 
-*color4: #62d6e8
-*color12: #62d6e8
+! cyan
+*.color6:       #5e8d87
+*.color14:      #8abeb7
 
-*color5: #b45bcf
-*color13: #b45bcf
+! white
+*.color7:       #707880
+*.color15:      #c5c8c6
 
-*color6: #a1efe4
-*color14: #a1efe4
+URxvt.allow_bold:           true
 
-*color16: #b45bcf
-*color17: #00f769
-*color18: #3a3c4e
-*color19: #4d4f68
-*color20: #62d6e8
-*color21: #f1f2f8
+!scientifica
+!URxvt*font: xft:Hack:size=11,xft:Font\ Awesome\ 5\ Free:size=11
 
+! Fix font space
+urxvt*font: xft:Hack:size=9
+URxvt*letterSpace: 0
 
-!!!!:== gruvbox color scheme:==
-!*background: #1d2021
-!*foreground: #ebdbb2
-!! Black + DarkGrey
-!*color0:  #282828
-!*color8:  #928374
-!! DarkRed + Red
-!*color1:  #cc241d
-!*color9:  #fb4934
-!! DarkGreen + Green
-!*color2:  #98971a
-!*color10: #b8bb26
-!! DarkYellow + Yellow
-!*color3:  #d79921
-!*color11: #fabd2f
-!! DarkBlue + Blue
-!*color4:  #458588
-!*color12: #83a598
-!! DarkMagenta + Magenta
-!*color5:  #b16286
-!*color13: #d3869b
-!! DarkCyan + Cyan
-!*color6:  #689d6a
-!*color14: #8ec07c
-!! LightGrey + White
-!*color7:  #a89984
-!*color15: #ebdbb2
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+URxvt.keysym.Shift-Up:   command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt*scrollTtyOutput:   false
+URxvt*scrollWithBuffer:  true
+URxvt*scrollTtyKeypress: true
+
+URxvt*perl-ext-common: default,matcher,selection-to-clipboard
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+! Cursor
+URxvt.cursorBlink:          true
+!URxvt.cursorColor:          #C84F1F
+Urxvt.cursorColor: #C8921F
+URxvt.cursorUnderline: false

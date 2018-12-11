@@ -1,12 +1,11 @@
 #!/bin/bash
 
 ID=$(xdpyinfo | grep focus | cut -f4 -d " ")
-PID=$(($(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3) + 6))
-echo $ID
-echo $PID
-if [ -e "/proc/$PID/cwd" ]
+PID=$(($(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3)))
+ZSH_PID=$(pstree -p $PID | grep 'zsh' | awk -F'[()]' '{ print $2 }')
+if [ -e "/proc/$ZSH_PID/cwd" ]
 then
-    ssh-agent i3-sensible-terminal -d $(readlink /proc/$PID/cwd) &
+    ssh-agent i3-sensible-terminal -cd $(readlink /proc/$ZSH_PID/cwd) &
 else
     ssh-agent i3-sensible-terminal &
 fi

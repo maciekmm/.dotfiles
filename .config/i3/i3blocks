@@ -7,7 +7,7 @@
 #
 # align
 # color
-# background
+# #background
 # border
 # command
 # full_text
@@ -30,13 +30,14 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 markup=pango
 
 full_text=<span font="8"></span>
+full_text=
 align=center
-separator=false
-separator_block_width=0
+separator=true
+separator_block_width=20
 
 [separator]
 color=#28282800
-background=#33333300
+#background=#33333300
 
 #[window title]
 #command=xdotool getactivewindow getwindowname | tr -d '\n' | head -c30 | iconv -f utf-8 -t ascii && echo -n "  "
@@ -44,36 +45,16 @@ background=#33333300
 #interval=1
 #align=center
 #markup=none
-#background=#33333300
-
-[separator]
-color=#33333300
-background=#28282800
+##background=#33333300
 
 [playerctl]
 command=/home/maciekmm/.config/i3/blocks/playerctl
 label=
 markup=none
 instance=spotify
-min_width=200
 interval=5
+separator_block_width=10
 
-[separator]
-color=#28282800
-background=#33333300
-
-[brightness]
-command=/home/maciekmm/.config/i3/blocks/brightness
-background=#33333300
-border=
-label=
-min_width=60
-interval=10
-signal=12
-
-[separator]
-color=#33333300
-background=#28282800
 #
 # Volume indicator
 #
@@ -82,31 +63,26 @@ background=#28282800
 # See the script for details.
 [volume]
 label=
-min_width=60
 instance=Master
 interval=10
 signal=10
-
-[separator]
-color=#28282800
-background=#33333300
+separator_block_width=10
 
 [microphone]
 command=/home/maciekmm/.config/i3/blocks/microphone
-background=#33333300
-min_width=40
 interval=once
 signal=10
 
-[separator]
-color=#33333300
-background=#28282800
-
 [bluetooth]
 command=/home/maciekmm/.config/i3/blocks/bluetooth
-label=
-min_width=40
 interval=5
+
+[brightness]
+command=/home/maciekmm/.config/i3/blocks/brightness
+border=
+label=
+interval=10
+signal=12
 
 #
 # Memory usage
@@ -114,8 +90,8 @@ interval=5
 # The type defaults to "mem" if the instance is not specified.
 [memory]
 label=
-min_width=120
 interval=30
+
 
 #[memory]
 #label=SWAP
@@ -123,15 +99,15 @@ interval=30
 #separator=false
 #interval=30
 
-
-[separator]
-color=#33333300
-background=#28282800
+[disk]
+label=   ~/
+#instance=/mnt/data
+interval=30
+separator_block_width=10
 
 [disk]
-label=
-min_width=75
-#instance=/mnt/data
+label=/
+instance=/
 interval=30
 
 # Disk usage
@@ -140,48 +116,33 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 
-[separator]
-color=#28282800
-background=#33333300
-
-[load_average]
+[cpu_usage]
+command=/usr/lib/i3blocks/cpu_usage -d 0
 label=
-background=#33333300
 interval=10
-min_width=60
 
-[separator]
-color=#33333300
-background=#28282800
+[wifi]
+label=
+interval=10
+command=nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d\: -f2
+instance=wlp5s0
+separator_block_width=10
 
-# Battery indicator
-#
-# The battery instance defaults to 0.
+[iface]
+label=
+interval=10
+
 [battery]
 label=
-#instance=1
-min_width=90
 interval=30
 
-[separator]
-color=#28282800
-background=#33333300
-# Date Time
-#
 [time]
 label=
-background=#33333300
-min_width=75
 command=date '+%d-%m'
 interval=5
-
-[separator]
-color=#33333300
-background=#28282800
+separator_block_width=10
 
 [time]
 label=
 command=date '+%H:%M:%S '
-background=#33333300
 interval=1
-min_width=90

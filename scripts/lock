@@ -16,7 +16,7 @@ for RES in $SR; do
 done
 
 TMPBG=/tmp/screen.png
-scrot $TMPBG && convert $TMPBG -scale 5% -scale 2000% -fill black -draw "fill-opacity 0.4 $rectangles" $TMPBG
+maim $TMPBG && convert $TMPBG -scale 5% -scale 2000% -fill black -draw "fill-opacity 0.4 $rectangles" $TMPBG
 
 letterEnteredColor=d23c3dff
 letterRemovedColor=d23c3dff
