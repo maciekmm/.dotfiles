@@ -227,11 +227,11 @@ bindsym $mod+r mode "resize"
 # take screenshots
 set $screenshot [u]pload, [c]lipboard, [s]ave, [f]ile
 mode "$screenshot" {
-        bindsym --release u exec /home/maciekmm/scripts/screenshot "-s"; mode "default"
-        bindsym Print exec /home/maciekmm/scripts/screenshot "-s"; mode "default"
+        bindsym --release u exec $HOME/scripts/screenshot "-s"; mode "default"
+        bindsym Print exec $HOME/scripts/screenshot "-s"; mode "default"
         bindsym --release c exec maim -s | xclip -selection clipboard -t image/png; mode "default"
         bindsym --release s exec maim -s | tee ~/images/screenshots/$( uuidgen ).png | xclip -selection clipboard -t image/png; mode "default"
-		bindsym --release f exec file=$(zenity --file-selection --save --filename="/home/maciekmm/images/screenshots/$(uuidgen).png" --title="Screenshot") && maim -s "$file"; mode "default"
+		bindsym --release f exec file=$(zenity --file-selection --save --filename="$HOME/images/screenshots/$(uuidgen).png" --title="Screenshot") && maim -s "$file"; mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -241,7 +241,7 @@ bindsym Print mode "$screenshot"
 set $options [s]potify, [p]ause notifications, [r]esume notifications, p[i]n window, [m]onitors refresh
 mode "$options" {
         # Spotify + youtube
-        bindsym s exec --no-startup-id "python /home/maciekmm/scripts/spotatube/spotatube.py | xclip -selection clipboard && notify-send 'Spotify link copied'"; mode "default"
+        bindsym s exec --no-startup-id "python $HOME/scripts/spotatube/spotatube.py | xclip -selection clipboard && notify-send 'Spotify link copied'"; mode "default"
 
         # resume notifications
         bindsym r exec --no-startup-id "notify-send 'DUNST_COMMAND_RESUME'"; mode "default"
@@ -321,8 +321,8 @@ exec --no-startup-id thunderbird
 for_window [instance="scratchpad"] move scratchpad
 for_window [title="urxvt-scratchpad"] move scratchpad
 bindsym $mod+u exec keepassxc -name scratchpad 
-bindsym $mod+p [class="(?i)keepassxc" instance="scratchpad"] scratchpad show
+bindsym $mod+p exec "~/scripts/showorspawn.sh keepassxc keepassxc scratchpad"
 bindsym $mod+t [class="(?i)urxvt"] scratchpad show
-exec --no-startup-id keepassxc -name scratchpad
+exec --no-startup-id keepassxc
 exec --no-startup-id i3-sensible-terminal -title urxvt-scratchpad
 
