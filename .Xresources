@@ -61,7 +61,7 @@ URxvt*scrollTtyOutput:   false
 URxvt*scrollWithBuffer:  true
 URxvt*scrollTtyKeypress: true
 
-URxvt*perl-ext-common: default,matcher,selection-to-clipboard
+URxvt*perl-ext-common: default,matcher,selection-to-clipboard,font-size
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
@@ -70,3 +70,10 @@ URxvt.cursorBlink:          true
 !URxvt.cursorColor:          #C84F1F
 Urxvt.cursorColor: #C8921F
 URxvt.cursorUnderline: false
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
