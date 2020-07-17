@@ -35,7 +35,13 @@ else
   CUR_ICON="${ICON_STOP}"
 fi
 
-if [[ "${INFO_TITLE}" != "" ]] && [[ "${INFO_ARTIST}" != "" ]]; then
-  echo "${INFO_ARTIST} - ${INFO_TITLE} ${CUR_ICON}"
-  echo "${INFO_ARTIST} - ${INFO_TITLE} ${CUR_ICON}"
+INFO_CONTEXT=$INFO_ARTIST
+
+if [[ "${INFO_CONTEXT}" == "" ]]; then
+	INFO_CONTEXT="${INFO_ALBUM}"
+fi
+
+if [[ "${INFO_TITLE}" != "" ]] && [[ "${INFO_CONTEXT}" != "" ]]; then
+  echo "${INFO_CONTEXT} - ${INFO_TITLE} ${CUR_ICON}"
+  echo "${INFO_CONTEXT} - ${INFO_TITLE} ${CUR_ICON}"
 fi

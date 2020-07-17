@@ -26,7 +26,7 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=/home/maciekmm/.config/i3/blocks/old/$BLOCK_NAME
 markup=pango
 
 full_text=<span font="8"></span>
@@ -49,7 +49,7 @@ color=#28282800
 
 [playerctl]
 command=/home/maciekmm/.config/i3/blocks/playerctl
-label=
+label= 
 markup=none
 instance=spotify
 interval=5
@@ -62,7 +62,7 @@ separator_block_width=10
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-label=
+label= 
 instance=Master
 interval=10
 signal=10
@@ -79,8 +79,7 @@ interval=5
 
 [brightness]
 command=/home/maciekmm/.config/i3/blocks/brightness
-border=
-label=
+label= 
 interval=10
 signal=12
 
@@ -89,7 +88,7 @@ signal=12
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=
+label= 
 interval=30
 
 
@@ -100,13 +99,13 @@ interval=30
 #interval=30
 
 [disk]
-label=   ~/
+label=  ~/ 
 #instance=/mnt/data
 interval=30
 separator_block_width=10
 
 [disk]
-label=/
+label=/ 
 instance=/
 interval=30
 
@@ -117,32 +116,32 @@ interval=30
 # (defaults to 10 for 10%).
 
 [cpu_usage]
-command=/usr/lib/i3blocks/cpu_usage -d 0
+command=/home/maciekmm/.config/i3/blocks/old/cpu_usage -d 0
 label=
 interval=10
 
 [wifi]
-label=
+label= 
 interval=10
 command=nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d\: -f2
 instance=wlp5s0
 separator_block_width=10
 
 [iface]
-label=
+label= 
 interval=10
 
 [battery]
-label=
+label= 
 interval=30
 
 [time]
-label=
+label= 
 command=date '+%d-%m'
 interval=5
 separator_block_width=10
 
 [time]
-label=
+label= 
 command=date '+%H:%M:%S '
 interval=1

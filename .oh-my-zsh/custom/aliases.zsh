@@ -13,7 +13,11 @@ alias fixit='sudo rm -f /var/lib/pacman/db.lck && sudo pacman-mirrors -g && sudo
 
 # Colored diff
 alias diff='diff --color=auto'
+alias termite='i3-sensible-terminal'
 
+function workon() {
+	source ./$1/bin/activate
+}
 function subs() {
 	iconv -f CP1250 -t UTF-8 $1
 }

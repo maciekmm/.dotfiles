@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
     "editor.minimap.enabled": true,
-    "files.autoSave": "off",
+    "files.autoSave": "onFocusChange",
     "editor.fontSize": 13,
     "window.zoomLevel": 0,
     "editor.cursorBlinking": "solid",
@@ -27,6 +27,26 @@
     "go.autocompleteUnimportedPackages": true,
     "workbench.iconTheme": "seti",
     "vim.disableAnnoyingNeovimMessage": true,
-    "workbench.panel.location": "bottom"
+    "workbench.panel.location": "bottom",
+    "editor.tabSize": "4",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "terminal.integrated.rendererType": "dom",
+    "go.useLanguageServer": true,
+    "html.mirrorCursorOnMatchingTag": false,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
     //"git.enabled": false
 }

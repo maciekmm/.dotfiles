@@ -13,7 +13,7 @@
 set $mod Mod3
 # Left alt
 set $modalt Mod1
-# Windows button
+# Escape button
 set $sup Mod4
 
 set_from_resource $darkred     color1  #000000
@@ -34,11 +34,11 @@ set_from_resource $black       color0  #000000
 set_from_resource $lightblack  color8  #000000
 set_from_resource $background  background
 set $transparent #000000
-set $height 24
+set $height 32
 
 #                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
-client.focused          $background $black $white $darkblue $black
-client.focused_inactive $background $darkcyan $white $background $background
+client.focused          $background $darkgreen $black $darkblue $black
+client.focused_inactive $background $background $white $background $background
 client.unfocused        $background $background $white $darkblue $background
 client.urgent           $background $background $background $background $background
 client.placeholder $background $background $background $background $background
@@ -238,7 +238,7 @@ mode "$screenshot" {
 bindsym Print mode "$screenshot"
 
 # rarely used options
-set $options [s]potify, [p]ause notifications, [r]esume notifications, p[i]n window, [m]onitors refresh
+set $options [s]potify, [p]ause notifications, [r]esume notifications, p[i]n window, [m]onitors refresh, turn [o]ff main monitor
 mode "$options" {
         # Spotify + youtube
         bindsym s exec --no-startup-id "python $HOME/scripts/spotatube/spotatube.py | xclip -selection clipboard && notify-send 'Spotify link copied'"; mode "default"
@@ -250,6 +250,7 @@ mode "$options" {
         
         bindsym i fullscreen disable; floating enable; resize set 700 400; sticky enable; move window to position 1315 900; mode "default"
 		bindsym m exec "$HOME/scripts/monitor-refresh"; mode "default"
+		bindsym o exec xrandr --output eDP1 --off; mode "default"
             
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -289,7 +290,7 @@ bindsym XF86AudioPrev exec playerctl previous
 bar {
   i3bar_command i3bar
   status_command i3blocks -c ~/.config/i3/i3blocks
-  tray_padding 3px
+  tray_padding 6px
   strip_workspace_numbers yes
   position top
   height $height

@@ -11,3 +11,4 @@ export VISUAL="vim"
 # Setup GO environment
 export GOPATH="$HOME/development/projects/repositories/go:$HOME/development/projects/go/.repo_private:$HOME/development/projects/go/.repo_commercial"
 export PATH="$PATH:$HOME/development/projects/repositories/go/bin:$HOME/development/projects/go/.repo_private/bin:$HOME/development/projects/go/.repo_commercial/bin:$HOME/.npm-global/bin"
+export GPG_TTY=$(tty)

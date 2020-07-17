@@ -1,10 +1,22 @@
 [user]
-	email = business@maciekmm.net
+	email = git@maciekmm.net
 	name = Maciej Mionskowski
-	signingkey = A20E0C4E8571568D
+	signingkey = DC4327BD2C6A5AF7
 [core]
 	editor = vim
+	autocrlf = input
+	excludesfile = ~/.gitignore
 [pull]
 	rebase = true
 [color]
 	ui = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgsign = true
+
+[alias]
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
