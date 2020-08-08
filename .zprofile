@@ -1,4 +1,3 @@
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
+if [ "$(tty)" = "/dev/tty1" ]; then
+	 _JAVA_AWT_WM_NONREPARENTING=1 sway
 fi
-

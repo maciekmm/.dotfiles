@@ -1,0 +1,227 @@
+# Read `man 5 sway` for a complete reference.
+
+set $mod Mod3
+set $sup Mod4
+set $modalt Mod1
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# Your preferred terminal emulator
+set $term kitty
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi --show=drun -I -m
+
+default_border pixel
+hide_edge_borders smart
+
+# Monitor setup
+output * bg /home/maciekmm/images/wallpapers/cables.png fill
+output eDP-1 resolution 1920x1080 position 0,0
+output HDMI-A-2 resolution 1920x1080 position 1920,0
+
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+
+### Input configuration
+input type:keyboard { 
+    xkb_layout pl,us
+    xkb_options caps:hyper
+}
+
+input "2522:37008:A4TECH_USB_Device" {
+	accel_profile flat
+	pointer_accel -0.5
+}
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+$modalt+q kill
+
+# Start your launcher
+bindsym $mod+d exec $menu
+
+# Drag floating windows by holding down $mod and left mouse button.
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+$modalt+c reload
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+#
+# Moving around:
+#
+
+# Move your focus around
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Or use $mod+[up|down|left|right]
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move the focused window with the same, but add Shift
+bindsym $mod+$modalt+$left move left
+bindsym $mod+$modalt+$down move down
+bindsym $mod+$modalt+$up move up
+bindsym $mod+$modalt+$right move right
+
+# Ditto, with arrow keys
+bindsym $mod+$modalt+Left move left
+bindsym $mod+$modalt+Down move down
+bindsym $mod+$modalt+Up move up
+bindsym $mod+$modalt+Right move right
+
+#
+# Workspaces:
+#
+    # Switch to workspace
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:" 
+set $ws4 "4:" 
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:7"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
+#
+# move workspace
+bindsym $mod+x move workspace to output left
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+$modalt+1 move container to workspace $ws1
+bindsym $mod+$modalt+2 move container to workspace $ws2
+bindsym $mod+$modalt+3 move container to workspace $ws3
+bindsym $mod+$modalt+4 move container to workspace $ws4
+bindsym $mod+$modalt+5 move container to workspace $ws5
+bindsym $mod+$modalt+6 move container to workspace $ws6
+bindsym $mod+$modalt+7 move container to workspace $ws7
+bindsym $mod+$modalt+8 move container to workspace $ws8
+bindsym $mod+$modalt+9 move container to workspace $ws9
+bindsym $mod+$modalt+0 move container to workspace $ws10
+
+set $default_gaps_inner 0
+
+gaps inner 0
+gaps outer 0
+
+#smart_gaps on
+
+workspace $ws2 gaps inner 5
+workspace $ws2 gaps outer 0
+
+# split in horizontal orientation
+bindsym $mod+backslash splith
+
+# split in vertical orientation
+bindsym $mod+minus splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+$modalt+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+$modalt+s sticky toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+#
+# Scratchpad:
+#
+# Sway has a "scratchpad", which is a bag of holding for windows.
+# You can send windows there and get them back later.
+
+# Move the currently focused window to the scratchpad
+bindsym $mod+v move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+c scratchpad show
+
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+bar {
+	id waybar
+	swaybar_command waybar
+}
+
+
+exec redshift-gtk
+exec nextcloud
+exec nm-applet --indicator
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+
+exec_always mako --font 'Source Code Pro 10' --background-color '#2E2E31' --text-color '#F9F9FA' --default-timeout 5000 --width 400 --markup 1
+
+bindsym $mod+z exec makoctl dismiss
+bindsym $mod+p exec keepassxc
+
+include $HOME/.config/sway/config.d/*
+include /etc/sway/config.d/*
+
+exec_always pkill swaybar

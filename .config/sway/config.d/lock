@@ -1,0 +1,13 @@
+set $lock $HOME/.config/sway/swaylock.sh
+
+exec swayidle -w \
+         timeout 300 $lock \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep $lock
+
+bindsym $sup+l exec $lock
+bindsym $sup+$modalt+s exec "systemctl suspend"
+bindsym $sup+$modalt+r exec "systemctl reboot"
+bindsym $sup+$modalt+p exec "systemctl poweroff"
+bindsym $sup+$modalt+h exec "systemctl hibernate"
