@@ -2,6 +2,8 @@ for_window [class="Spotify"] move to workspace $ws8
 for_window [class="Steam"] move to workspace $ws9
 assign [instance="^Mail$"] $ws6
 
-for_window [class="^chromium$"] floating disable, move window to workspace current
-for_window [class="^Chromium$"] floating disable, move window to workspace current
 for_window [instance="keepassxc"] floating enable
+for_window [app_id="org.keepassxc.KeePassXC"] floating enable
+for_window [app_id="org.keepassxc.KeePassXC"] move scratchpad
+for_window [app_id="scratchpad.kitty"] floating enable
+for_window [app_id="scratchpad.kitty"] move scratchpad

@@ -221,17 +221,23 @@ bar {
 	}
 }
 
+bindsym $modalt+Space exec "$HOME/scripts/open-project.sh"
 
 exec redshift-gtk
 exec nextcloud
 exec nm-applet --indicator
 exec udiskie --appindicator
+exec keepassxc -platform wayland
+exec kitty --class=scratchpad.kitty
+
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 exec_always mako --font 'Source Code Pro 10' --background-color '#2E2E31' --text-color '#F9F9FA' --default-timeout 5000 --width 400 --markup 1
 
 bindsym $mod+z exec makoctl dismiss
-bindsym $mod+p exec keepassxc -platform wayland
+bindsym $mod+p [app_id="org.keepassxc.KeePassXC"] scratchpad show
+bindsym $mod+t [app_id="scratchpad.kitty"] scratchpad show
+
 
 include $HOME/.config/sway/config.d/*
 include /etc/sway/config.d/*
