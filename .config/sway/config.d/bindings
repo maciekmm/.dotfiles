@@ -7,3 +7,4 @@ for_window [app_id="org.keepassxc.KeePassXC"] floating enable
 for_window [app_id="org.keepassxc.KeePassXC"] move scratchpad
 for_window [app_id="scratchpad.kitty"] floating enable
 for_window [app_id="scratchpad.kitty"] move scratchpad
+for_window [title="Firefox - Sharing Indicator"] floating enable
