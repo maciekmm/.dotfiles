@@ -1,0 +1,7 @@
+xkb_symbols "basic" {
+    include "pl"
+    name[Group1] = "Polish (Custom)";
+
+    key <CAPS> { [ Hyper_L ] };
+    modifier_map Mod3 { <CAPS> };
+};
