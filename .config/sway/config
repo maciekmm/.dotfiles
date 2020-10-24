@@ -25,8 +25,6 @@ hide_edge_borders smart
 
 # Monitor setup
 output * bg /home/maciekmm/images/wallpapers/cables.png fill
-output eDP-1 resolution 1920x1080 position 0,0
-output HDMI-A-2 resolution 1920x1080 position 1920,0
 
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
@@ -34,7 +32,7 @@ bindswitch --reload --locked lid:off output $laptop enable
 
 
 ### Input configuration
-input type:keyboard { 
+input "*" { 
     xkb_layout pl,us
     xkb_options caps:hyper
 }
@@ -42,6 +40,11 @@ input type:keyboard {
 input "2522:37008:A4TECH_USB_Device" {
 	accel_profile flat
 	pointer_accel -0.5
+}
+
+input "1848:5893:Mad_Catz_Mad_Catz_R.A.T.5_Mouse" {
+	accel_profile flat
+	pointer_accel -0.6
 }
 
 # Start a terminal

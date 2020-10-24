@@ -6,8 +6,8 @@ set -o pipefail
 
 IDEA_EXECUTABLE="$HOME/.local/bin/idea"
 EDITOR_EXECUTABLE="code-oss"
-DEVELOPMENT_DIR="$HOME/development/projects"
-PROJECT_DIRS=(javascript www java)
+DEVELOPMENT_DIR="$HOME/development"
+PROJECT_DIRS=("studia/origami" "projects/java")
 
 projects=""
 
