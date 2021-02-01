@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 set encoding=utf8
+set visualbell
+set noerrorbells
 
 " YouCompleteMe
 let g:dotvim = '~/.vim'
@@ -13,33 +15,37 @@ let g:cpp_class_decl_highlight = 1
 let g:cpp_concepts_highlight = 1
 let g:cpp_no_function_highlight = 1
 
-" VIMTEX
-let g:vimtex_view_general_viewer = 'qpdfview'
-let g:vimtex_view_general_options = '--unique @pdf\#src:@tex:@line:@col'
-let g:vimtex_view_general_options_latexmk = '--unique'
-let g:vimtex_compiler_latexmk = {
-\ 'backend' : 'jobs',
-\ 'background' : 1,
-\ 'build_dir' : '',
-\ 'callback' : 1,
-\ 'continuous' : 1,
-\ 'executable' : 'latexmk',
-\ 'options' : [
-\   '-pdf',
-\   '-verbose',
-\   '-file-line-error',
-\   '-synctex=1',
-\   '-interaction=nonstopmode',
-\ ],
-\}
+let g:tex_flavor = 'latex'
+
+" Starting to use vimtex and it needs several configurations to work correctly
+let g:vimtex_fold_enabled = 0
+let g:vimtex_indent_enabled = 1
+let g:vimtex_complete_recursive_bib = 0
+let g:vimtex_complete_close_braces = 1
+let g:vimtex_quickfix_mode = 2
+let g:vimtex_quickfix_open_on_warning = 1
+
+let g:vimtex_compiler_latexmk = { 
+        \ 'executable' : 'latexmk',
+        \ 'options' : [ 
+        \   '-xelatex',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
+
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'scrooloose/nerdtree'
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'lervag/vimtex' " LaTeX support
+Plugin 'xuhdev/vim-latex-live-preview'
 Plugin 'morhetz/gruvbox' " Color scheme
+Plugin 'dense-analysis/ale'
 Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-surround'
 Plugin 'ctrlp.vim' " CTRL-P
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -48,6 +54,9 @@ autocmd VimEnter * call vimtex#init()
 
 set autowrite " Save file if :make called
 
+xnoremap "+y y:call system("wl-copy", @")<cr>
+nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
+nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
 
 set backspace=2 " Backspace in insert mode
 set laststatus=2 " Always display status line
@@ -60,6 +69,9 @@ set noswapfile " Shit get's annoying
 set history=64
 set ruler
 set showtabline=2
+set hlsearch " Highlight search
+set ignorecase
+set smartcase
 
 set shiftwidth=4
 set tabstop=4 " Tab is 4 spaces wide
