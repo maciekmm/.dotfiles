@@ -46,6 +46,7 @@ Plugin 'morhetz/gruvbox' " Color scheme
 Plugin 'dense-analysis/ale'
 Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-surround'
+Plugin 'sirtaj/vim-openscad'
 Plugin 'ctrlp.vim' " CTRL-P
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -72,6 +73,7 @@ set showtabline=2
 set hlsearch " Highlight search
 set ignorecase
 set smartcase
+set novisualbell
 
 set shiftwidth=4
 set tabstop=4 " Tab is 4 spaces wide

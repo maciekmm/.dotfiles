@@ -47,6 +47,11 @@ input "1848:5893:Mad_Catz_Mad_Catz_R.A.T.5_Mouse" {
 	pointer_accel -0.6
 }
 
+input "7119:5:USB_Optical_Mouse" {
+	accel_profile flat
+	pointer_accel -0.5
+}
+
 # Start a terminal
 bindsym $mod+Return exec $term
 
@@ -245,4 +250,3 @@ bindsym $mod+t [app_id="scratchpad.kitty"] scratchpad show
 include $HOME/.config/sway/config.d/*
 include /etc/sway/config.d/*
 
-exec_always pkill swaybar
