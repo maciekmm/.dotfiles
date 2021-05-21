@@ -9,7 +9,7 @@ exec swayidle -w \
 		 after-resume 'swaymsg "output * dpms on"'
 
 bindsym $sup+l exec $lock
-bindsym $sup+$modalt+s exec "systemctl suspend"
-bindsym $sup+$modalt+r exec "systemctl reboot"
-bindsym $sup+$modalt+p exec "systemctl poweroff"
-bindsym $sup+$modalt+h exec "systemctl hibernate"
+bindsym --locked $sup+$modalt+s exec "systemctl suspend"
+bindsym --locked $sup+$modalt+r exec "systemctl reboot"
+bindsym --locked $sup+$modalt+p exec "systemctl poweroff"
+bindsym --locked $sup+$modalt+h exec "systemctl hibernate"
